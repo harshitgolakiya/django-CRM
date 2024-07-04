@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Profile Details</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image">
+                </div>
+                <div class="col-md-8 profile-info">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <strong>Name</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <h6>{{record.first_name}} {{record.last_name}} </h6>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <strong>Email</strong>
+                            </div>
+                            <div class="col-sm-9">
+                                <span> {{record.email}} </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <strong>Phone</strong>
+                            </div>
+                            <div class="col-sm-9">
+                                <span> {{record.phone}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-sm-3">
+                        <strong>Address</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <span> {{record.address}} </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <strong>City</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <span> {{record.city}} </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <strong>State</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <span> {{record.state}} </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <strong>Country</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <span> {{record.country}} </span>
+                        
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+                    <a href="{% url "updaterecord" record.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url "deleterecord" record.id  %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

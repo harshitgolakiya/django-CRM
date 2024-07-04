@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form class='col-md-6 offset-md-3 fw-semibold' method="post" >
+        {% csrf_token %}
+        <div class="border fw-semibold border-2 border-success pt-5 pb-3 px-4 bg-light-subtle rounded-3 mt-5">
+            <h1 class="text-success">Register</h1>
+           {{form.as_p}}
+            
+            <button type="submit" class="btn btn-success">Register</button>
+            <div class="mt-3">
+                <p>Already have an account? <a href="{% url 'home' %}">Login</a></p>
+            </div>
+        </div>
+    </form>
+{% endblock %}

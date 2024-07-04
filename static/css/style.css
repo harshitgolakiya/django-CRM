@@ -1,0 +1,24 @@
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+.profile-info .row {
+    margin-bottom: 10px;
+}
+.btn-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-group .btn {
+    margin-left: 5px;
+    padding: 5px 10px;
+}

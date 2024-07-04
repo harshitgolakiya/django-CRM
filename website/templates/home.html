@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block meassage %}
+{% if messages %}
+{% for message in messages  %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+{% endif %} 
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class='d-flex mb-2 mt-5 justify-content-between'>
+        <h5 class='text-success mb-3 h-25'>All Records</h5>
+        <a href="{% url 'addrecord' %}" class="btn btn-primary h-25">Add Record</a>
+    </div>
+    {% if record %}
+    <table class="table mt-0 table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">City</th>
+                <th scope="col">Country</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in record %}
+              <tr>
+                <th scope="row"> {{record.id}} </th>
+                <td> {{record.first_name}} </td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.city}}</td>
+                <td>{{record.country}}</td>
+                <td><a href="{% url 'recordview' record.id %}" class="btn btn-primary">View</a> | <a href="{% url "deleterecord" record.id  %}" class="btn btn-danger">Delete</a>
+                    | <a href="{% url "updaterecord" record.id %}" class="btn btn-success">Edit</a></td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% endif %}
+{% else %}
+    <div class="form">
+        <form class='col-md-6 offset-md-3 fw-semibold' method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="border fw-semibold border-2 border-success pt-5 pb-3 px-4 bg-light-subtle rounded-3 mt-5">
+                <h1 class="text-success">Login</h1>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control " id="exampleInputEmail1" name="username" aria-describedby="emailHelp" placeholder="Enter Username">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label ">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+                </div>
+                
+                <button type="submit" class="btn btn-success">Login</button>
+                <div class="mt-3">
+                    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+{% endif %}
+{% endblock %}
